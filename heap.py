@@ -170,7 +170,9 @@ a.insert(105)
 a.insert(20)
 a.insert(3)
 
+
 for i in range(5):
     print(a.extract())
 
 import heapq
+
