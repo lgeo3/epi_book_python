@@ -103,7 +103,7 @@ def bsearch(A, q_val):
     >>> bsearch(A, 823913)
     """
     left = 0
-    right = len(A)
+    right = len(A) - 1
     while (right - left) >= 1:
         mid = left + int((right-left)/2)
         if A[mid] < q_val:
