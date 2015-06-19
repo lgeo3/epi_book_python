@@ -104,17 +104,16 @@ def bsearch(A, q_val):
     """
     left = 0
     right = len(A) - 1
-    while (right - left) >= 1:
+    result = None
+    while (right - left) >= 0:
         mid = left + int((right-left)/2)
         if A[mid] < q_val:
             left = mid + 1
         if A[mid] > q_val:
             right = mid - 1
         if A[mid] == q_val:
-            right = mid
-    if left < len(A) and A[left] == q_val:
-        return left
-    else:
-        return None
+            right = mid - 1
+            result = mid
+    return result
 
 print(bsearch([5, 5, 5, 10], 12))
