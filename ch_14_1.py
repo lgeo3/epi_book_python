@@ -29,6 +29,8 @@ def intersection(A, B):
     Time complexity is O(n+m) with n, m lengh of respectively A and B
     Space complexity is O(1)
 
+    This solution is good if the two array have similar size
+
     >>> intersection([2,3,3,5,5,6,7,7,8,12], [5,5,6,8,8,9,10,10])
     [5, 6, 8]
 
@@ -59,3 +61,25 @@ def intersection(A, B):
         except IndexError:
             break  # we quit the loop, one array reach end
     return result
+
+def intersection_different_size(A,B):
+    """
+    use this one if one array is really bigger than the second one
+
+    Here we suppose that len(A) >>>> len(B)
+
+
+    >>> intersection_different_size([2,3,3,5,5,6,7,7,8,12, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13,], [5,5,6,8,8,9,10,10])
+    [5, 6, 8]
+    """
+    from ch_12_1 import bsearch
+    result = []
+    last_append_value = None
+    for val in B:
+        if val  == last_append_value:
+            continue
+        if bsearch(A, val):
+            result.append(val)
+            last_append_value = val
+    return result
+
