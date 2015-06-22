@@ -91,7 +91,8 @@ def bsearch_brute_force(sorted_int_list, q_val):
 
 def bsearch(A, q_val):
     """
-    Search a val in a list (bruteforce version complexity: O(n))
+    Search a val in a sorted list
+    Complexity is O(nlogn) with n length of A
 
     return index of first occurence of `q_val` in A
     return None if not found
@@ -116,4 +117,4 @@ def bsearch(A, q_val):
             result = mid
     return result
 
-print(bsearch([5, 5, 5, 10], 12))
+#print(bsearch([5, 5, 5, 10], 12))
