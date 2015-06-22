@@ -92,7 +92,7 @@ def bsearch_brute_force(sorted_int_list, q_val):
 def bsearch(A, q_val):
     """
     Search a val in a sorted list
-    Complexity is O(nlogn) with n length of A
+    Complexity is O(log n) with n length of A
 
     return index of first occurence of `q_val` in A
     return None if not found
