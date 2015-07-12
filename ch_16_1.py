@@ -60,4 +60,3 @@ def move_ring(stacks, index_in, index_out, labels):
     return stacks
 
 
-
