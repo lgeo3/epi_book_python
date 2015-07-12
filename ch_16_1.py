@@ -30,19 +30,32 @@ def move_ring(stacks, index_in, index_out, labels):
     # else: operation is permited
     ring = stacks[index_in].pop(-1)
     stacks[index_out].append(ring)
-    print("move operation:      %s -> %s " % (labels[index_in], labels[index_out]) )
+    print("move operation: %s -> %s " % (labels[index_in], labels[index_out]) )
     return stacks
 
 
-def hanoi(stacks, labels=[0, 1, 2], start_stack=0, _in=0, _dest=1, _pivot=2):
-    print("hanoi")
+def hanoi(stacks, labels=[0, 1, 2], n=None, _in=0, _dest=1, _pivot=2):
+    """
+    >>> hanoi([[3, 2, 1], [], []])
+    move operation: 0 -> 1
+    move operation: 0 -> 2
+    move operation: 1 -> 2
+    move operation: 0 -> 1
+    move operation: 2 -> 0
+    move operation: 2 -> 1
+    move operation: 0 -> 1
+    [[], [3, 2, 1], []]
+    """
+    if n is None:
+        n = len(stacks[_in])
+    start_stack = len(stacks[_in]) - n
+    p = stacks[_in][start_stack:]
     if len(stacks[_in][start_stack:]) == 1:
         stacks = move_ring(stacks, _in, _dest, labels )
     elif len(stacks[_in]) > 1:
-        stacks = hanoi(stacks, labels=labels, start_stack=start_stack+1, _in=_in, _dest=_pivot, _pivot=_dest)
+        stacks = hanoi(stacks, labels=labels, n=n-1, _in=_in, _dest=_pivot, _pivot=_dest)
         stacks = move_ring(stacks, _in, _dest, labels)
-        stacks = hanoi(stacks, labels=labels, _in=_pivot, _dest=_dest, _pivot=_in)
-
+        stacks = hanoi(stacks, labels=labels, _in=_pivot, _dest=_dest, _pivot=_in, n=n-1)
     return stacks
 # ca ne marche pas pour [5,4,3,2] .. et merde..
 
@@ -86,8 +99,10 @@ def hanoi(stacks, labels=[0, 1, 2], start_stack=0, _in=0, _dest=1, _pivot=2):
 ##print(hanoi([1,2,3,4,5]))
 
 
-def autotest():
-    assert((hanoi([1]))==([],[],[1]))
-    assert(hanoi([1,2])==([],[1,2], []))
+#def autotest():
+#    assert((hanoi([1]))==([],[],[1]))
+#    assert(hanoi([1,2])==([],[1,2], []))
 
 #autotest()
+
+#hanoi([[6, 5, 4, 3, 2, 1], [], []])
