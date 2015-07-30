@@ -10,7 +10,7 @@
 
 ## PUTAIN je n'y suis pas arrivé en 15 minutes
 
-def find_maximum_profit(A):
+def find_maximum_profit_old(A):
     """
     :param A:
     :return:
@@ -29,7 +29,7 @@ def find_maximum_profit(A):
     >>> find_maximum_profit([310, 315, 275, 295, 260, 270, 290, 230, 255, 250])
     30
 
-    Complexity is O(n), space complexity n + 2
+    Complexity is O(n)
     """
     cur_profit = 0 # max_profit so far
     buy_index = 0 # corresponding to  min price so far
@@ -46,6 +46,38 @@ def find_maximum_profit(A):
 #TODO: rewrite it using min and max.. not sure to be better.. but ok
 
 
+
+
+
+def find_maximum_profit(A):
+    """
+    :param A:
+    :return:
+    >>> find_maximum_profit([10, 20])
+    10
+    >>> find_maximum_profit([10, 20, 20, 40])
+    30
+    >>> find_maximum_profit([20, 10, 20, 40])
+    30
+    >>> find_maximum_profit([20, 10, 0, 30, 40])
+    40
+    >>> find_maximum_profit([80, 0, 40])
+    40
+    >>> find_maximum_profit([0, 80, 10, 40])
+    80
+    >>> find_maximum_profit([310, 315, 275, 295, 260, 270, 290, 230, 255, 250])
+    30
+    """
+    buying_price = A[0]
+    max_profit = 0
+
+    for sell_price in A:
+        temp_profit = sell_price - buying_price
+        if max_profit < temp_profit:
+            max_profit = temp_profit
+        if buying_price > sell_price:
+            buying_price = sell_price
+    return max_profit
 
 
 
