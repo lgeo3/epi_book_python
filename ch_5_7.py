@@ -17,20 +17,25 @@ def exponentiation(x, y):
 
     i = 0
 
+    if y < 0:
+        return 1
+
     if y > 0:
-        if False:
-            pass
-        #if y %2  == 0:
-        #    a = exponentiation(x, y/2)
-        #    return a * a
+        if y %2  == 0:
+            a = exponentiation(x, y/2)
+            return a * a
         else:
             while i != y:
                 res *= x
                 i += 1
     if y < 0:
-        while i != y:
-            res = res / float(x)
-            i -= 1
+        if y % 2:
+            a = exponentiation(x, y/2)
+            return 1. / (a*a)
+        else:
+            while i != y:
+                res = res / float(x)
+                i -= 1
 
     return res
 
