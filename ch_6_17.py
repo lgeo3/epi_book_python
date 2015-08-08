@@ -2,6 +2,7 @@
 
 def sudoku_checker(grid):
     """
+    TODO: complexity analysis O(n^2)
     :param grid:
     :return:
 
