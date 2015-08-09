@@ -10,6 +10,10 @@
 """
 
 
+#TODO: implement drawing propose here : http://billmill.org/pymag-trees/
+
+
+
 class BinaryTree(object):
     def __init__(self, data, left=None, right=None):
         if data is None:
