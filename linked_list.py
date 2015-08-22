@@ -5,8 +5,8 @@
 
 class Node(object):
     __slots__ = 'next', 'data'
-    def __init__(self, next=None, data=None):
-        self.next = next
+    def __init__(self,  data=None):
+        self.next = None
         self.data = data
 
     def __repr__(self):
@@ -15,28 +15,31 @@ class Node(object):
 
 class LinkList(object):
     def __init__(self):
-        self.head = Node()
-        self.tail = Node()
+        self.next = None
+        self.data = None
+        #self.head.next = None
 
-    def push(self, node):
+    def insert_beginning(self, node):
         """
         insert beginning
         :param node:
         :return:
         """
-        node.next = self.head.next
-        self.head.next = node
+        if type(node) in [float, int]:
+            node = Node(node)
+        node.next = self.next
+        self.next = node
 
     def pop(self):
-        res = self.head.next
-        self.head.next = self.head.next.next
+        res = self.next
+        self.next = self.next.next
         return res
 
     def __repr__(self):
-        cur = self.head.next
+        cur = self
         res = []
         while cur.next != None:
-            res.append(str(cur))
+            res.append(str(cur.next.data))
             cur = cur.next
         return " ----->> ".join(res)
 
